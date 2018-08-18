@@ -1,0 +1,13 @@
+/@/
+
+/.idea/
+
+/cache/
+!/cache/.holder
+
+!/private/
+/private/*
+!/private/.holder
+!/private/ssl/
+/private/ssl/*
+!/private/ssl/.holder
