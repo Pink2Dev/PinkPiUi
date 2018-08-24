@@ -1,0 +1,77 @@
+a {
+	color: white;
+}
+a:hover {
+	color: pink;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	/*font-family: 'Comfortaa', cursive;*/
+	background: #323257 url("../img/background.png") repeat-x top center;
+	color: white;
+}
+
+.badge {
+	background: hotpink;
+	font-weight: normal;
+}
+#staking .badge.rounded-circle {
+	padding-right: 6px;
+	font-size: 50%;
+	vertical-align: text-top;
+}
+
+footer img.logo {
+	max-width: 16em;
+}
+
+h5,
+.h5{
+	color: #ccc;
+	text-transform: uppercase;
+}
+h6,
+.h6{
+	color: hotpink;
+	font-weight: bold;
+}
+
+hr {
+	background-color: #6c757d;
+	border-width: 2px;
+}
+
+i.fas {
+	color: hotpink;
+}
+i.fas.negative,
+.negative {
+	color: indianred;
+}
+.text-muted i.fas {
+	color: inherit;
+}
+
+.nav-link {
+	border-bottom: solid 3px;
+	border-color: mediumpurple;
+	padding-left: 0;
+	padding-right: 0;
+}
+.nav-link i {
+	color: hotpink;
+}
+.nav-link.active {
+	background: pink;
+	border-color: pink;
+	color: black;
+}
+.nav-link:hover {
+	border-color: pink;
+	color: white;
+}
+
+.row.row-alt {
+	background: #35294E;
+}

@@ -1,0 +1,16 @@
+# Inaccessibility recovery
+ * * * * * pi cd /home/pi/crontab && php network_internet.php >> network_internet.log 2>&1
+ * * * * * pi sleep 31; cd /home/pi/crontab && php network_reset.php >> network_reset.log 2>&1
+
+# Currency rates
+ * * * * * pi sleep 15; cd /home/pi/crontab && php conversions.php >> conversions.log 2>&1
+
+# Hourly: Check for PinkPi updates
+31 * * * * pi cd /home/pi/scripts && ./ui_update.sh >> ui_update.log 2>&1
+41 * * * * pi cd /home/pi/scripts && ./wallet_update.sh >> wallet_update.log 2>&1
+
+# Weekly: Check for system updates
+14 3 * * 0 pi cd /home/pi/crontab && ./system_update.sh >> system_update.log 2>&1
+
+# Monthly: Check certificates
+ 3 1 4 * * pi cd /home/pi/crontab && ./wallet_ssl.sh >> wallet_ssl.log 2>&1
