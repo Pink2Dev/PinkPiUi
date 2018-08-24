@@ -13,7 +13,7 @@ install_pinkpiui() {
 	TARGET="$DIR/$DATE"
 
 	# Download latest version
-	git clone "$URL_REPO/tree/$VERSION_LATEST" "$TARGET" > /dev/null 2>&1
+	git clone --branch "$VERSION_LATEST" "$URL_REPO" "$TARGET"
 
 	# Install latest version
 	"$TARGET/scripts/ui_upgrade.sh"
