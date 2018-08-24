@@ -13,6 +13,9 @@ chown pi:pi "$DIR/VERSION"
 # Correct permissions
 chmod 777 "${SOURCE}cache"
 
+# Copy cache files
+cp -R "${SOURCE}cache" "$DIR/cache"
+
 # Link latest interface folders
 ln -fns "${SOURCE}cache" "$HOME/cache"
 ln -fns "${SOURCE}crontab" "$HOME/crontab"
