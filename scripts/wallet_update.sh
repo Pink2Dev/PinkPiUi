@@ -57,6 +57,10 @@ install_pinkcoin() {
 
 	# Download latest version by tag
 	git clone --branch "$VERSION_LATEST" "$URL_REPO" "$TARGET"
+	if [ $? -ne "0" ]
+	then
+		exit 0
+	fi
 
 	cd "$TARGET/src/leveldb"
 
