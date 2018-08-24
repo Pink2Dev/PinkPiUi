@@ -2,7 +2,7 @@
 require __DIR__ . '/init.php';
 
 function recordSuccess() {
-	$filename = __DIR__ . '/../cache/last_network_internet_success';
+	$filename = '/home/pi/cache/last_network_internet_success';
 	$now = time();
 
 	$bytes = file_put_contents($filename, $now);
