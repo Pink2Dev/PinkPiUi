@@ -7,9 +7,6 @@ SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 # Copy version file
 cp "${SOURCE}VERSION" "$DIR"
 
-# Correct permissions
-chown pi:pi "$DIR/VERSION"
-
 # Correct file ownership (script executes as root)
 chown pi:pi "$DIR/VERSION"
 
