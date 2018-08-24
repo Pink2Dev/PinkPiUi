@@ -2,7 +2,8 @@
 
 /.idea/
 
-/cache/
+!/cache/
+/cache/*
 !/cache/.holder
 
 /private/
