@@ -4,6 +4,8 @@ HOME="/home/pi"
 DIR="$HOME/pinkpiui"
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 URL_REPO="https://github.com/Pink2Dev/PinkPiUi"
+URL_VERSION="$URL_REPO/raw/master/VERSION"
+VERSION_LATEST=$(wget "$URL_VERSION" -q -O - | tr -d '[:space:]')
 
 
 install_pinkpiui() {
@@ -11,17 +13,15 @@ install_pinkpiui() {
 	TARGET="$DIR/$DATE"
 
 	# Download latest version
-	git clone "$URL_REPO" "$TARGET" > /dev/null 2>&1
+	git clone "$URL_REPO/tree/$VERSION_LATEST" "$TARGET" > /dev/null 2>&1
 
 	# Install latest version
 	"$TARGET/scripts/ui_upgrade.sh"
 }
 
 version_check() {
-	URL_VERSION="$URL_REPO/raw/master/VERSION"
 	VERSION_FILE="${SOURCE}VERSION"
 	VERSION_CURRENT="0.0.0"
-	VERSION_LATEST=$(wget "$URL_VERSION" -q -O - | tr -d '[:space:]')
 
 	if [ -f "$VERSION_FILE" ]
 	then

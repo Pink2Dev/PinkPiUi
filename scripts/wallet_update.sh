@@ -3,6 +3,8 @@
 HOME="/home/pi"
 DIR="$HOME/pinkcoin"
 URL_REPO="https://github.com/Pink2Dev/Pink2"
+URL_VERSION="$URL_REPO/raw/master/VERSION"
+VERSION_LATEST=$(wget "$URL_VERSION" -q -O - | tr -d '[:space:]')
 
 
 install_dependencies() {
@@ -55,8 +57,8 @@ install_pinkcoin() {
 	DATE=`date '+%Y%m%d%H%M%S'`
 	TARGET="$DIR/$DATE"
 
-	# Download latest version
-	git clone "$URL_REPO" "$TARGET" > /dev/null 2>&1
+	# Download latest version by tag
+	git clone "$URL_REPO/tree/$VERSION_LATEST" "$TARGET" > /dev/null 2>&1
 
 	cd "$TARGET/src/leveldb"
 
@@ -71,10 +73,8 @@ install_pinkcoin() {
 
 version_check() {
 	SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
-	URL_VERSION="$URL_REPO/raw/master/VERSION"
 	VERSION_FILE="${SOURCE}VERSION"
 	VERSION_CURRENT="0.0.0.0"
-	VERSION_LATEST=$(wget "$URL_VERSION" -q -O - | tr -d '[:space:]')
 
 	if [ -f "$VERSION_FILE" ]
 	then
