@@ -64,9 +64,3 @@ if ! grep -qxFe "$LINE" "$FILE"
 then
 	echo "$LINE" >> "$FILE"
 fi
-
-# Pause for a moment
-sleep 5s
-
-# Reboot to reload network configurations
-reboot
