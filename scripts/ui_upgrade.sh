@@ -20,7 +20,7 @@ ln -fns "${SOURCE}html" "$HOME/html"
 ln -fns "${SOURCE}scripts" "$HOME/scripts"
 
 # Cron requires files owned by root
-chown root:root "$HOME/crontab/pinkpi"
+sudo chown root:root "$HOME/crontab/pinkpi"
 
 # Init requires files owned by root
-chown root:root "$HOME/scripts/init.sh"
+sudo chown root:root "$HOME/scripts/init.sh"
