@@ -19,6 +19,9 @@ install_pinkpiui() {
 		exit 0
 	fi
 
+	# Copy cache files
+	cp -R "${SOURCE}cache" "$TARGET"
+
 	# Install latest version
 	"$TARGET/scripts/ui_upgrade.sh"
 }
