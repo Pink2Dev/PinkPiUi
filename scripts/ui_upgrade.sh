@@ -20,4 +20,4 @@ ln -fns "${SOURCE}html" "$HOME/html"
 ln -fns "${SOURCE}scripts" "$HOME/scripts"
 
 # Cron requires files owned by root
-chown root:root "$DIR/crontab/pinkpi"
+chown root:root "$HOME/crontab/pinkpi"
