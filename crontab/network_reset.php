@@ -52,3 +52,6 @@ if ($lastOnlineStatus > $timeout) {
 
 // if it has been <duration> since out last "online" status, revert to static network
 exec('sudo /home/pi/scripts/network_reset.sh');
+
+# Reboot for new network configurations
+exec('sudo reboot');
