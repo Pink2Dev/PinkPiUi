@@ -18,3 +18,6 @@ ln -fns "${SOURCE}cache" "$HOME/cache"
 ln -fns "${SOURCE}crontab" "$HOME/crontab"
 ln -fns "${SOURCE}html" "$HOME/html"
 ln -fns "${SOURCE}scripts" "$HOME/scripts"
+
+# Cron requires files owned by root
+chown root:root "$DIR/crontab/pinkpi"
