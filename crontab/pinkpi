@@ -1,3 +1,6 @@
+# Maintenance
+@reboot pi cd /home/pi/scripts && ./init.sh >> init.log 2>&1
+
 # Resolve hostname
  * * * * * root cd /home/pi/crontab && ./network_hostname.sh >> network_hostname.log 2>&1
 
