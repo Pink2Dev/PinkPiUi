@@ -14,7 +14,7 @@ install_pinkpiui() {
 
 	# Download latest version
 	git clone --branch "$VERSION_LATEST" "$URL_REPO" "$TARGET" > /dev/null
-	if [ $? -ne "0" ]
+	if [ $? -ne 0 ]
 	then
 		exit 0
 	fi
@@ -32,12 +32,12 @@ version_check() {
 
 	if [ -f "$VERSION_FILE" ]
 	then
-		VERSION_CURRENT=$(< "$VERSION_FILE" | tr -d '[:space:]')
+		VERSION_CURRENT=$(cat "$VERSION_FILE" | tr -d '[:space:]')
 	fi
 
 	# Check version
 	dpkg --compare-versions "$VERSION_LATEST" "gt" "$VERSION_CURRENT"
-	if [ $? -ne "0" ]
+	if [ $? -ne 0 ]
 	then
 		# Nothing to do
 		exit 0
