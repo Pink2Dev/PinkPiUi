@@ -26,4 +26,4 @@ sudo chown root:root "$HOME/crontab/pinkpi"
 sudo chown root:root "$HOME/scripts/init.sh"
 
 # Correct permissions
-chmod 755 "$HOME/scripts/init.sh"
+sudo chmod 755 "$HOME/scripts/init.sh"
