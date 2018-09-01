@@ -7,6 +7,22 @@ SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 TARGET="/usr/bin"
 BIN="${SOURCE}src/pink2d"
 
+cd "${SOURCE}src/leveldb"
+
+# Clear any rubble
+make clean
+
+# Compile database first
+TARGET_OS=Linux make --quiet libleveldb.a libmemenv.a > /dev/null
+
+cd "${SOURCE}src"
+
+# Clear any rubble
+make -f makefile.pi clean
+
+# Compile new wallet
+make --quiet -f makefile.pi > /dev/null
+
 if [ ! -f "$BIN" ]
 then
 	# e.g. not finished compiling
