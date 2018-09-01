@@ -4,8 +4,7 @@ HOME="/home/pi"
 DIR="$HOME/pinkpiui"
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 URL_REPO="https://github.com/Pink2Dev/PinkPiUi"
-URL_VERSION="$URL_REPO/raw/master/VERSION"
-VERSION_LATEST=$(wget "$URL_VERSION" -q -O - | tr -d '[:space:]')
+VERSION_LATEST=$(git -C "$SOURCE" tag -l "*.*.*" --sort=-refname | head -1)
 
 
 install_pinkpiui() {
@@ -18,6 +17,9 @@ install_pinkpiui() {
 	then
 		exit 0
 	fi
+
+	# Mark current version
+	echo "$VERSION_LATEST" > "$TARGET/VERSION"
 
 	# Copy cache files
 	cp -R "${SOURCE}cache" "$TARGET"
