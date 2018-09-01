@@ -7,9 +7,6 @@ SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 # Copy version file
 cp "${SOURCE}VERSION" "$DIR"
 
-# Correct file ownership (script executes as root)
-chown pi:pi "$DIR/VERSION"
-
 # Correct permissions
 chmod 777 "${SOURCE}cache"
 
@@ -26,4 +23,4 @@ sudo chown root:root "$HOME/crontab/pinkpi"
 sudo chown root:root "$HOME/scripts/init.sh"
 
 # Correct permissions
-chmod 755 "$HOME/scripts/init.sh"
+sudo chmod 755 "$HOME/scripts/init.sh"
