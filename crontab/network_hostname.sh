@@ -2,20 +2,19 @@
 
 FILE="/etc/hosts"
 HOST="pinkpi.local"
-PATTERN="([0-9]*\.){3}[0-9]*"
-IP=$(ifconfig | grep -Eo "inet (addr:)?$PATTERN" | grep -Eo "$PATTERN" | grep -v "127.0.0.1")
-if [ -z "$IP" ]
+DATA=$(ip addr | grep -Eo "inet6? [0-9a-f\.:]*" | grep -Ev "::1|127.0.0.1" | sed -e 's/inet6* //')
+IPS=(${DATA//\n/ })
+if [ ${#IPS[@]} -lt 1 ]
 then
 	# IP is not yet resolved
 	exit 1;
 fi
 
-# Only replace when the IP is different
-if ! grep -q "$IP" "$FILE"
-then
-	# Remove any currently assigned hostname
-	sed -i "/.*$HOST$/d" "$FILE"
+# Remove any currently assigned hostname
+sed -i "/.*$HOST$/d" "$FILE"
 
+for IP in "${IPS[@]}"
+do
 	# Assign hostname
 	echo "$IP	$HOST" >> "$FILE"
-fi
+done

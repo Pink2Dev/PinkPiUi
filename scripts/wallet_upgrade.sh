@@ -23,8 +23,5 @@ cp "$BIN" "$TARGET"
 # Copy version file (i.e. mark as installed)
 cp "${SOURCE}VERSION" "$DIR"
 
-# Correct file ownership (script executes as root)
-chown pi:pi "$DIR/VERSION"
-
 # Restart Pinkcoin Wallet
 systemctl restart "$SERVICE"
