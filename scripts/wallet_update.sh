@@ -65,15 +65,8 @@ install_pinkcoin() {
 	# Mark current version
 	echo "$VERSION_LATEST" > "$TARGET/VERSION"
 
-	cd "$TARGET/src/leveldb"
-
-	# Compile database first
-	TARGET_OS=Linux make --quiet libleveldb.a libmemenv.a > /dev/null
-
-	cd "$TARGET/src"
-
-	# Compile new wallet
-	make --quiet -f makefile.pi > /dev/null
+	# Install latest version
+	"$TARGET/scripts/wallet_upgrade.sh"
 }
 
 version_check() {
