@@ -251,7 +251,7 @@ function getPinkcoinWallet() {
 	$config['port'] = $ini['rpcport'];
 	$config['username'] = '"' . $ini['rpcuser'] . '"';
 	$config['password'] = '"' . $ini['rpcpassword'] . '"';
-	if (array_key_exists('rpcssl', $ini)) {
+	if (array_key_exists('rpcssl', $ini) && $ini['rpcssl']) {
 		$config['certificate'] = $filepath . '/server.cert';
 	}
 
