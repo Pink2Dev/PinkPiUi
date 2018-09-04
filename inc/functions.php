@@ -456,7 +456,7 @@ function footer_statuses($info) {
 	$lastSeen = $block['time'];
 
 	$status = [];
-	if ($heightSyncing <= 0) {
+	if ($heightNetwork > 0 && $heightSyncing <= 0) {
 		$between = Util::betweenTimestamps($lastSeen);
 		$stubs = array_slice($between['stubs'], 0, 2);
 
