@@ -64,9 +64,6 @@ install_pinkcoin() {
 
 	# Mark current version
 	echo "$VERSION_LATEST" > "$TARGET/VERSION"
-
-	# Install latest version
-	"$TARGET/scripts/wallet_upgrade.sh"
 }
 
 version_check() {

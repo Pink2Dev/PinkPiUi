@@ -14,6 +14,7 @@
 # Hourly: Check for PinkPi updates
 31 * * * * pi cd /home/pi/scripts && ./ui_update.sh >> ui_update.log 2>&1
 41 * * * * pi cd /home/pi/scripts && ./wallet_update.sh >> wallet_update.log 2>&1
+*/5 * * * * pi cd /home/pi/scripts && ./wallet_upgrade.sh >> wallet_upgrade.log 2>&1
 
 # Weekly: Check for system updates
 14 3 * * 0 pi cd /home/pi/crontab && ./system_update.sh >> system_update.log 2>&1
