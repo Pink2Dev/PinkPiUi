@@ -251,7 +251,7 @@ function getPinkcoinWallet() {
 	$config['port'] = $ini['rpcport'];
 	$config['username'] = '"' . $ini['rpcuser'] . '"';
 	$config['password'] = '"' . $ini['rpcpassword'] . '"';
-	if (array_key_exists('rpcssl', $ini)) {
+	if (array_key_exists('rpcssl', $ini) && $ini['rpcssl']) {
 		$config['certificate'] = $filepath . '/server.cert';
 	}
 
@@ -456,7 +456,7 @@ function footer_statuses($info) {
 	$lastSeen = $block['time'];
 
 	$status = [];
-	if ($heightSyncing <= 0) {
+	if ($heightNetwork > 0 && $heightSyncing <= 0) {
 		$between = Util::betweenTimestamps($lastSeen);
 		$stubs = array_slice($between['stubs'], 0, 2);
 
