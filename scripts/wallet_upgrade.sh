@@ -25,7 +25,7 @@ then
 fi
 
 # Check for an existing process
-if $COMPILING
+if [ $COMPILING -ne 0 ]
 then
 	exit 1
 fi
