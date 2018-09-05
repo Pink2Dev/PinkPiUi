@@ -1,7 +1,6 @@
 #!/bin/bash
 
 HOME="/home/pi"
-COMPILING=$(pgrep make)
 DIR="$HOME/pinkcoin"
 SERVICE="pinkcoin.service"
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
@@ -25,7 +24,7 @@ then
 fi
 
 # Check for an existing process
-if [ $COMPILING -ne 0 ]
+if pgrep -x "make" > /dev/null
 then
 	exit 1
 fi
