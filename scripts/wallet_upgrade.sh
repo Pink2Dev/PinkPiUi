@@ -6,9 +6,15 @@ DIR="$HOME/pinkcoin"
 SERVICE="pinkcoin.service"
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 TARGET="/usr/bin"
-VERSION_CURRENT=$(cat "$DIR/VERSION" | tr -d '[:space:]')
+VERSION_CURRENT="0.0.0.0"
+VERSION_FILE="$DIR/VERSION"
 VERSION_LATEST=$(cat "${SOURCE}VERSION" | tr -d '[:space:]')
 BIN="${SOURCE}src/pink2d"
+
+if [ -f "$VERSION_FILE" ]
+then
+	VERSION_CURRENT=$(cat "$VERSION_FILE" | tr -d '[:space:]')
+fi
 
 # Check version
 dpkg --compare-versions "$VERSION_LATEST" "gt" "$VERSION_CURRENT"
