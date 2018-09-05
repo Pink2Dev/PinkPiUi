@@ -35,7 +35,7 @@ install_db4() {
 		fi
 
 		# Extract
-		tar -xzf db-4.8.30.NC.tar.gz > /dev/null
+		tar -xzf db-4.8.30.NC.tar.gz
 
 		# Build the library and install to our prefix
 		cd db-4.8.30.NC/build_unix/
