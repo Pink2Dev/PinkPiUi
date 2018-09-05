@@ -101,6 +101,11 @@ then
 	exit 1
 fi
 
+if pgrep -x "checkinstall" > /dev/null
+then
+	exit 3
+fi
+
 # Install Dependencies
 install_dependencies
 
