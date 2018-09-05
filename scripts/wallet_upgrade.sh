@@ -3,6 +3,7 @@
 HOME="/home/pi"
 DIR="$HOME/pinkcoin"
 SERVICE="pinkcoin.service"
+SCRIPT=$(basename "$0")
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 TARGET="/usr/bin"
 VERSION_LATEST=$(cat "${SOURCE}VERSION" | tr -d '[:space:]')
@@ -92,19 +93,14 @@ version_check() {
 	fi
 }
 
-# Check the version
-version_check
-
 # Check for an existing process
-if pgrep -x "make" > /dev/null
+if pgrep -f "$SCRIPT" > /dev/null
 then
 	exit 1
 fi
 
-if pgrep -x "checkinstall" > /dev/null
-then
-	exit 3
-fi
+# Check the version
+version_check
 
 # Install Dependencies
 install_dependencies
