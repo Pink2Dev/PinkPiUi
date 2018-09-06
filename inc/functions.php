@@ -449,8 +449,8 @@ function footer_statuses($info) {
 
 	// Network Status
 	$height = $info['mining']['blocks'];
-	$heightNetwork = $info['peer']['blocks'];
-	$heightSyncing = max(0, $height, $heightNetwork - $height);
+	$heightNetwork = max(0, $height, $info['peer']['blocks']);
+	$heightSyncing = $heightNetwork - $height;
 
 	$block = pink2d('getblockbynumber', $height);
 	$lastSeen = $block['time'];
