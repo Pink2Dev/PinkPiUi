@@ -9,6 +9,12 @@ TARGET="/usr/bin"
 VERSION_LATEST=$(cat "${SOURCE}VERSION" | tr -d '[:space:]')
 BIN="${SOURCE}src/pink2d"
 
+# check if we are the only local instance
+if [[ "`pidof -x $(basename $0) -o %PPID`" ]]
+then
+	exit 0
+fi
+
 install_dependencies() {
 	sudo DEBIAN_FRONTEND=noninteractive apt-get -qqy install checkinstall libboost-all-dev libminiupnpc-dev libssl1.0-dev > /dev/null
 
@@ -92,12 +98,6 @@ version_check() {
 		exit 0
 	fi
 }
-
-# Check for an existing process
-if pgrep -f "$SCRIPT" > /dev/null
-then
-	exit 1
-fi
 
 # Check the version
 version_check
