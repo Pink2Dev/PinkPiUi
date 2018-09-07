@@ -67,7 +67,7 @@ try {
 			break;
 			case 'upgrade':
 				// Output cannot be recorded if we wish to release the console (i.e. use &)
-				exec('sudo /home/pi/scripts/wallet_upgrade.sh > /dev/null 2>&1 &');
+				exec('sudo /home/pi/scripts/wallet_install.sh > /dev/null 2>&1 &');
 
 				$success[] = 'Wallet Upgrade started... Pinkcoin is being restarted...';
 			break;
