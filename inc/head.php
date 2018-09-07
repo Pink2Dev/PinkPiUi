@@ -14,3 +14,11 @@
 <script src="js/popper.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/pinkcoin.js"></script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52331300-18"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-52331300-18');
+</script>
