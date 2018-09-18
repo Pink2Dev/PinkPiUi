@@ -563,15 +563,15 @@ function walletLock(array $walletInfo) {
 }
 
 function walletUnlock(array $walletInfo, $passphrase, $timeout=1, $stakingOnly=true) {
-	if (!$passphrase) {
-		throw new Exception('Please provide a Passphrase');
-	}
-
 	// "Wallet is already unlocked, use walletlock first if need to change unlock settings."
 	walletLock($walletInfo);
 
 	// "Error: running with an unencrypted wallet, but walletpassphrase was called. (code -15)"
 	if ($walletInfo['encrypted']) {
+		if (!$passphrase) {
+			throw new Exception('Please provide a Passphrase');
+		}
+
 		pink2d('walletpassphrase', $passphrase, $timeout, $stakingOnly);
 	}
 
