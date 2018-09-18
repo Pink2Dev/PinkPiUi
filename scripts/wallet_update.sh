@@ -4,7 +4,8 @@ HOME="/home/pi"
 DIR="$HOME/pinkcoin"
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 URL_REPO="https://github.com/Pink2Dev/Pink2"
-VERSION_LATEST=$(git -C "$SOURCE" tag -l "*.*.*" --sort=-v:refname | head -1)
+VERSION_LATEST=$(git fetch --tags && git -C "$SOURCE" tag -l "*.*.*.*" --sort=-v:refname | head -1)
+
 
 install_pinkcoin() {
 	DATE=`date '+%Y%m%d%H%M%S'`
