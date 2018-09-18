@@ -4,7 +4,7 @@ HOME="/home/pi"
 DIR="$HOME/pinkpiui"
 SOURCE=$(ls -dt "$DIR/"*"/" | head -1)
 URL_REPO="https://github.com/Pink2Dev/PinkPiUi"
-VERSION_LATEST=$(git -C "$SOURCE" tag -l "*.*.*" --sort=-v:refname | head -1)
+VERSION_LATEST=$(git fetch --tags && git -C "$SOURCE" tag -l "*.*.*" --sort=-v:refname | head -1)
 
 
 install_pinkpiui() {
