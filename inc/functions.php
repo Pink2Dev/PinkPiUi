@@ -446,6 +446,7 @@ function footer_status($status) {
 
 function footer_statuses($info) {
 	$statuses = [];
+	$walletConnections = $info['peer']['total'];
 
 	// Network Status
 	$height = $info['mining']['blocks'];
@@ -456,7 +457,7 @@ function footer_statuses($info) {
 	$lastSeen = $block['time'];
 
 	$status = [];
-	if ($heightNetwork > 0 && $heightSyncing <= 0) {
+	if ($walletConnections > 0 && $heightNetwork > 0 && $heightSyncing <= 0) {
 		$between = Util::betweenTimestamps($lastSeen);
 		$stubs = array_slice($between['stubs'], 0, 2);
 
@@ -497,7 +498,6 @@ function footer_statuses($info) {
 	$statuses[] = $status;
 
 	// Wallet Connections
-	$walletConnections = $info['peer']['total'];
 	$status = [];
 	$status['content'] = sprintf('%s connections', number_format($walletConnections));
 	$status['icon'] = 'fa-signal';
